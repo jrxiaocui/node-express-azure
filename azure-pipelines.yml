@@ -24,6 +24,15 @@ steps:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
     includeRootFolder: false
 
-- task: PublishBuildArtifacts@1
+- task: CopyFilesOverSSH@0
   displayName: 'Publish artifacts: drop'
+  inputs:
+          sshEndpoint: 'ubuntu-server'
+          sourceFolder: '$(Build.SourcesDirectory)/dist'
+          contents: '**'
+          targetFolder: '/home/tracy/test'
+          readyTimeout: '20000'
+          failOnEmptySource: true
+          cleanTargetFolder: true
+
   
