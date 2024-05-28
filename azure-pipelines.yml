@@ -32,7 +32,7 @@ steps:
   displayName: 'Publish artifacts: drop'
   inputs:
           sshEndpoint: 'ubuntu-server'
-          sourceFolder: '$(Build.SourcesDirectory)/package-lock.json'
+          sourceFolder: '$(Build.SourcesDirectory)'
           contents: '**'
           targetFolder: '/home/tracy/test'
           readyTimeout: '20000'
