@@ -31,7 +31,7 @@ steps:
    
   displayName: 'Publish artifacts'
   inputs:
-    sshEndpoint: 'ubuntu-server'
+    azureSubscription: 'ubuntu-server'
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: '**'
     targetFolder: '/home/tracy/test'
