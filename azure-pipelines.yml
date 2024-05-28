@@ -29,14 +29,14 @@ steps:
 
 - task: CopyFilesOverSSH@0
    
-  displayName: 'Publish artifacts: drop'
+  displayName: 'Publish artifacts'
   inputs:
-          sshEndpoint: 'ubuntu-server'
-          sourceFolder: '$(Build.SourcesDirectory)'
-          contents: '**'
-          targetFolder: '/home/tracy/test'
-          readyTimeout: '20000'
-          failOnEmptySource: true
-          cleanTargetFolder: true
+    sshEndpoint: 'ubuntu-server'
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: '**'
+    targetFolder: '/home/tracy/test'
+    readyTimeout: '20000'
+    failOnEmptySource: true
+    cleanTargetFolder: true
 
   
