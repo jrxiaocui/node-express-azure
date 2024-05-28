@@ -16,6 +16,7 @@ steps:
 
 - script: |
     # npm test
+     echo "$(Build.SourcesDirectory)"
   displayName: 'npm test'
 
 - task: ArchiveFiles@2
@@ -25,6 +26,7 @@ steps:
     includeRootFolder: false
 
 - task: CopyFilesOverSSH@0
+   
   displayName: 'Publish artifacts: drop'
   inputs:
           sshEndpoint: 'ubuntu-server'
