@@ -31,12 +31,11 @@ steps:
    
   displayName: 'Publish artifacts'
   inputs:
-    azureSubscription: 'ubuntu-server'
+    sshEndpoint: 'ubuntu-server'
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: '**'
     targetFolder: '/home/tracy/test'
     readyTimeout: '20000'
     failOnEmptySource: true
     cleanTargetFolder: true
-
   
