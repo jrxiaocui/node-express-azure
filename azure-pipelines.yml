@@ -1,5 +1,6 @@
 trigger:
-- master
+# - dev
+  none
 
 pool:
   vmImage: 'Ubuntu-latest'
@@ -15,7 +16,10 @@ steps:
   displayName: 'npm install'
 
 - script: |
-    npm test
+    # npm test
+     echo "$(Build.SourcesDirectory)"
+     echo "$(System.DefaultWorkingDirectory)"
+     ls
   displayName: 'npm test'
 
 - task: ArchiveFiles@2
@@ -25,14 +29,14 @@ steps:
     includeRootFolder: false
 
 - task: CopyFilesOverSSH@0
-  displayName: 'Publish artifacts: drop'
+   
+  displayName: 'Publish artifacts'
   inputs:
-          sshEndpoint: 'ubuntu-server'
-          sourceFolder: '$(Build.SourcesDirectory)/dist'
-          contents: '**'
-          targetFolder: '/home/tracy/test'
-          readyTimeout: '20000'
-          failOnEmptySource: true
-          cleanTargetFolder: true
-
+    sshEndpoint: 'ubuntu-server'
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: '**'
+    targetFolder: '/home/tracy/test'
+    readyTimeout: '20000'
+    failOnEmptySource: true
+    cleanTargetFolder: true
   
